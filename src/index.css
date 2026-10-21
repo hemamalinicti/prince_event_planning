@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    font-weight: 600;
+  }
+  
+  body {
+    background-color: #FDFBF7;
+    color: #260408;
+    overflow-x: hidden;
+    font-weight: 600;
+  }
+
+  p, span, li, a, button, label, input, textarea, select {
+    font-weight: 600;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+  }
+
+  ::selection {
+    background-color: #FFCCD5;
+    color: #520B1D;
+  }
+}
+
+/* Ensure every font, lighter font colors, and paragraphs are bold */
+.font-normal,
+.font-light {
+  font-weight: 700 !important;
+}
+
+.font-medium {
+  font-weight: 700 !important;
+}
+
+/* Muted / light text colors must be crisp and bold */
+[class*="text-burgundy-"],
+[class*="text-cream-"],
+[class*="text-cherry-"],
+[class*="text-amber-"],
+[class*="text-gold-"] {
+  font-weight: 600;
+}
+
+/* Custom luxury scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF6F0;
+}
+::-webkit-scrollbar-thumb {
+  background: #C7AC95;
+  border-radius: 9999px;
+  border: 2px solid #FAF6F0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C9184A;
+}
+
+/* Human touch flourishes */
+.font-editorial {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+}
+
+.font-display {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.editorial-italic {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+}
+
+.luxury-border {
+  border-color: rgba(148, 43, 70, 0.12);
+}
+
+.luxury-card-hover {
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s ease;
+}
+.luxury-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 35px -10px rgba(89, 13, 34, 0.12), 0 1px 3px rgba(89, 13, 34, 0.05);
+}
+
+.subtle-grain {
+  background-image: radial-gradient(rgba(183, 9, 76, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Gentle automatic Ken Burns zoom-in and zoom-out illusion */
+@keyframes heroZoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-hero-zoom {
+  animation: heroZoom 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Moving corner & highlighted rotating border beam */
+@keyframes rotateBorder {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-rotate-border {
+  animation: rotateBorder 3.5s linear infinite;
+  will-change: transform;
+}
+
+/* Butterfly 2-piece split & fly animation */
+@keyframes butterflyLeft {
+  0% {
+    opacity: 0;
+    transform: perspective(1200px) scale(0.35) translateX(-120px) translateY(80px) rotateY(-85deg) rotateZ(-12deg);
+  }
+  30% {
+    opacity: 1;
+    transform: perspective(1200px) scale(0.7) translateX(-60px) translateY(-30px) rotateY(-50deg) rotateZ(6deg);
+  }
+  55% {
+    transform: perspective(1200px) scale(0.88) translateX(-25px) translateY(-10px) rotateY(-70deg) rotateZ(-4deg);
+  }
+  75% {
+    transform: perspective(1200px) scale(0.98) translateX(-8px) translateY(0) rotateY(-25deg) rotateZ(2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1200px) scale(1) translateX(0) translateY(0) rotateY(0deg) rotateZ(0deg);
+  }
+}
+
+@keyframes butterflyRight {
+  0% {
+    opacity: 0;
+    transform: perspective(1200px) scale(0.35) translateX(120px) translateY(80px) rotateY(85deg) rotateZ(12deg);
+  }
+  30% {
+    opacity: 1;
+    transform: perspective(1200px) scale(0.7) translateX(60px) translateY(-30px) rotateY(50deg) rotateZ(-6deg);
+  }
+  55% {
+    transform: perspective(1200px) scale(0.88) translateX(25px) translateY(-10px) rotateY(70deg) rotateZ(4deg);
+  }
+  75% {
+    transform: perspective(1200px) scale(0.98) translateX(8px) translateY(0) rotateY(25deg) rotateZ(-2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1200px) scale(1) translateX(0) translateY(0) rotateY(0deg) rotateZ(0deg);
+  }
+}
+
+.animate-butterfly-left {
+  animation: butterflyLeft 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  transform-origin: right center;
+  backface-visibility: hidden;
+}
+
+.animate-butterfly-right {
+  animation: butterflyRight 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  transform-origin: left center;
+  backface-visibility: hidden;
+}
+
+@keyframes butterflyGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(201, 24, 74, 0.2), 0 0 40px rgba(212, 175, 55, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(201, 24, 74, 0.4), 0 0 70px rgba(212, 175, 55, 0.3);
+  }
+}
+
+.animate-butterfly-glow {
+  animation: butterflyGlow 2.5s ease-in-out infinite;
+}
+
+/* From Uiverse.io by kencode7 - Applied to About Page */
+.about-uiverse-bg,
+.uiverse-kencode7 {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      to bottom,
+      #fff 0%,
+      #fff 40%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    linear-gradient(to right, #0ed2da, #5f29c7);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-uiverse-bg::before,
+.uiverse-kencode7::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(90deg, #ccc 1px, transparent 1px);
+  background-size: 50px 100%;
+  pointer-events: none;
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+}
