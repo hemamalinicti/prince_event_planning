@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Sparkles, 
@@ -12,7 +12,11 @@ import {
   Quote, 
   Zap,
   SunMedium,
-  Check
+  Check,
+  CheckCircle2,
+  X,
+  Maximize2,
+  ArrowRight
 } from 'lucide-react';
 
 export default function About({ onOpenEnquiry }) {
@@ -39,72 +43,98 @@ export default function About({ onOpenEnquiry }) {
     }
   ];
 
-
   const [activeCard, setActiveCard] = useState(2); // 3rd card centered and popped by default
+  const [selectedPillarIndex, setSelectedPillarIndex] = useState(null);
   const [touchStartX, setTouchStartX] = useState(null);
 
   const pillarsOfRigor = [
     {
       shortName: 'Staging',
       icon: Layers,
+      image: '/pillar-engineering.png',
       title: 'Structural Load & Staging Engineering',
       desc: 'German aluminum box trusses and cantilevered roof systems engineered with wind tolerance up to 65 km/h for complete outdoor and arena safety.',
       stat: '65 km/h wind rated',
       specs: [
         'German TÜV-certified aluminum box trusses',
         'Multi-tiered load-bearing stage decking',
-        'Cantilevered all-weather arena roof rigging'
+        'Cantilevered all-weather arena roof rigging',
+        'Certified structural engineer calculations for every build'
       ]
     },
     {
       shortName: 'Decor',
       icon: Sparkles,
+      image: '/royal-wedding-palace.jpg',
       title: 'Royal Scenography & Floral Artistry',
       desc: 'Handcrafted palatial mandaps, imported floral arches, custom thematic backdrops, and luxury guest lounges styled with bespoke elegance.',
       stat: '100% bespoke sets',
       specs: [
         'Master-crafted wooden and fiber palatial mandaps',
         'Direct-import exotic floral arches and canopies',
-        'Architectural thematic ambient guest lounges'
+        'Architectural thematic ambient guest lounges',
+        'Custom color palettes with handpicked botanical elements'
       ]
     },
     {
       shortName: 'Acoustics',
       icon: Volume2,
+      image: '/hero-stage.jpg',
       title: 'Concert Acoustics & Line-Array Audio',
       desc: 'Frequency-tuned line arrays and wireless vocal microphone networks calibrated to eliminate harsh echoes across 100 to 10,000+ attendees.',
       stat: 'Zero latency audio',
       specs: [
         'Acoustically tuned line-array speaker hangs',
         'Digital DSP zero-latency signal processing',
-        'CPCB-compliant directional sound mapping'
+        'CPCB-compliant directional sound mapping',
+        'Multi-zone wireless microphone synchronization'
       ]
     },
     {
       shortName: 'Lighting',
       icon: SunMedium,
+      image: '/sangeet-celebrations.jpg',
       title: 'Intelligent Lighting & Laser Architecture',
       desc: 'DMX-automated moving-head fixtures, warm architectural ambient wash, follow-spots, and synchronized cold-pyro visual spectacles.',
       stat: 'DMX automated FX',
       specs: [
         'DMX computerized moving-head beam arrays',
         'Warm 3000K palatial architectural wash',
-        'Synchronized indoor-safe cold spark pyrotechnics'
+        'Synchronized indoor-safe cold spark pyrotechnics',
+        'Intelligent programmed spotlight tracking'
       ]
     },
     {
       shortName: 'Power',
       icon: Zap,
+      image: '/corporate-conventions.jpg',
       title: 'True 0-Second Power Redundancy',
       desc: 'Dual synchronized silent diesel generators with instantaneous automatic transfer switches guaranteeing uninterrupted festivities.',
       stat: '0-second failover',
       specs: [
         'Dual synchronized silent diesel gen-sets',
         'Instant automatic transfer switch (ATS)',
-        'Isolated pure-sine audio and video power lines'
+        'Isolated pure-sine audio and video power lines',
+        'On-site electrical engineering supervision'
       ]
     }
   ];
+
+  // Keyboard navigation for Details Lightbox
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (selectedPillarIndex === null) return;
+      if (e.key === 'Escape') setSelectedPillarIndex(null);
+      if (e.key === 'ArrowLeft') {
+        setSelectedPillarIndex((prev) => (prev === 0 ? pillarsOfRigor.length - 1 : prev - 1));
+      }
+      if (e.key === 'ArrowRight') {
+        setSelectedPillarIndex((prev) => (prev + 1) % pillarsOfRigor.length);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedPillarIndex]);
 
   const handlePrevPillar = () => {
     setActiveCard((prev) => (prev === 0 ? pillarsOfRigor.length - 1 : prev - 1));
@@ -195,7 +225,7 @@ export default function About({ onOpenEnquiry }) {
               The Five Pillars of Prince Rigor
             </h2>
             <p className="text-sm sm:text-base text-burgundy-800/80 leading-relaxed max-w-2xl mx-auto">
-              Every project undertaken by our team adheres to strict engineering calculations. Click any card to pop its full technical specifications.
+              Explore our core technical and aesthetic staging capabilities. Click any card to view complete engineering specifications and production details.
             </p>
           </div>
 
@@ -206,7 +236,7 @@ export default function About({ onOpenEnquiry }) {
             className="block lg:hidden py-4 overflow-hidden"
           >
             {/* 3D Overlapping Cascading Deck Container */}
-            <div className="relative w-full h-[490px] sm:h-[510px] flex items-center justify-center my-2">
+            <div className="relative w-full h-[480px] sm:h-[500px] flex items-center justify-center my-2">
               {pillarsOfRigor.map((pillar, idx) => {
                 const IconComponent = pillar.icon;
                 const isActive = activeCard === idx;
@@ -219,32 +249,26 @@ export default function About({ onOpenEnquiry }) {
                 let pointerEvents = 'auto';
 
                 if (diff === 0) {
-                  // Active Center Card (Website view popped state)
                   transformStyle = 'translateX(0) translateY(-8px) scale(1) rotate(0deg)';
                   zIndex = 35;
                   opacity = 1;
                 } else if (diff === 1) {
-                  // Card immediately to the right (cascading behind)
                   transformStyle = 'translateX(62%) translateY(6px) scale(0.88) rotate(2deg)';
                   zIndex = 20;
                   opacity = 0.65;
                 } else if (diff === -1) {
-                  // Card immediately to the left (cascading behind)
                   transformStyle = 'translateX(-62%) translateY(6px) scale(0.88) rotate(-2deg)';
                   zIndex = 20;
                   opacity = 0.65;
                 } else if (diff === 2) {
-                  // Card 2 steps to the right
                   transformStyle = 'translateX(105%) translateY(14px) scale(0.78) rotate(4deg)';
                   zIndex = 10;
                   opacity = 0.35;
                 } else if (diff === -2) {
-                  // Card 2 steps to the left
                   transformStyle = 'translateX(-105%) translateY(14px) scale(0.78) rotate(-4deg)';
                   zIndex = 10;
                   opacity = 0.35;
                 } else {
-                  // Hidden cards beyond view
                   transformStyle = diff > 0 ? 'translateX(140%) scale(0.7)' : 'translateX(-140%) scale(0.7)';
                   zIndex = 0;
                   opacity = 0;
@@ -254,103 +278,70 @@ export default function About({ onOpenEnquiry }) {
                 return (
                   <div
                     key={idx}
-                    onClick={() => setActiveCard(idx)}
+                    onClick={() => {
+                      setActiveCard(idx);
+                      setSelectedPillarIndex(idx);
+                    }}
                     style={{
                       transform: transformStyle,
                       zIndex,
                       opacity,
                       pointerEvents
                     }}
-                    className={`absolute w-[285px] sm:w-[310px] rounded-3xl p-5 sm:p-6 transition-all duration-500 ease-out cursor-pointer select-none flex flex-col justify-between ${
+                    className={`group absolute w-[290px] sm:w-[320px] h-[440px] sm:h-[460px] rounded-3xl overflow-hidden transition-all duration-500 ease-out cursor-pointer select-none flex flex-col justify-between ${
                       isActive
-                        ? 'bg-white border-2 border-cherry-500 ring-4 ring-cherry-400/25 shadow-2xl'
-                        : 'bg-gradient-to-br from-cream-50 via-white to-cream-100/80 border border-cream-300 shadow-lg'
+                        ? 'border-2 border-cherry-500 ring-4 ring-cherry-400/40 shadow-2xl -translate-y-2'
+                        : 'border border-white/20 shadow-lg'
                     }`}
                   >
-                    <div>
-                      {/* Top Icon & Tag */}
-                      <div className="flex items-center justify-between mb-3.5">
-                        <div
-                          className={`w-11 h-11 rounded-2xl flex items-center justify-center transition-colors duration-300 shadow-sm ${
-                            isActive
-                              ? 'bg-cherry-600 text-white shadow-cherry-600/30'
-                              : 'bg-cherry-50 border border-cherry-100 text-cherry-600'
-                          }`}
-                        >
-                          <IconComponent className="w-5 h-5" />
-                        </div>
-                        <span
-                          className={`font-mono text-xs font-bold px-2.5 py-0.5 rounded-full transition-colors ${
-                            isActive
-                              ? 'bg-cherry-100 text-cherry-900 border border-cherry-300'
-                              : 'bg-cream-200 text-burgundy-900'
-                          }`}
-                        >
-                          0{idx + 1}
-                        </span>
-                      </div>
-
-                      {/* Metric Stat Pill */}
-                      <div
-                        className={`inline-block px-2.5 py-0.5 rounded-full font-semibold text-[11px] mb-2.5 border transition-colors ${
-                          isActive
-                            ? 'bg-cherry-700 text-white border-cherry-800 font-bold shadow-sm'
-                            : 'bg-cherry-50 text-cherry-900 border-cherry-200/70'
-                        }`}
-                      >
-                        {pillar.stat}
-                      </div>
-
-                      {/* Title */}
-                      <h3
-                        className={`font-editorial text-lg sm:text-xl font-bold mb-2 leading-snug transition-colors ${
-                          isActive ? 'text-cherry-700' : 'text-burgundy-950'
-                        }`}
-                      >
-                        {pillar.title}
-                      </h3>
-
-                      {/* Description */}
-                      <p className="text-xs text-burgundy-800/85 leading-relaxed font-bold mb-3">
-                        {pillar.desc}
-                      </p>
-
-                      {/* Technical Specifications (Shown when active) */}
-                      {isActive && (
-                        <div className="mt-2.5 pt-2.5 border-t border-cream-200 space-y-1.5 animate-fadeIn">
-                          <div className="text-[11px] font-bold text-burgundy-900 flex items-center gap-1.5">
-                            <ShieldCheck className="w-3.5 h-3.5 text-cherry-600" />
-                            <span>Technical Specifications</span>
-                          </div>
-                          {pillar.specs.map((spec, sIdx) => (
-                            <div key={sIdx} className="flex items-start gap-1.5 text-[11px] text-burgundy-800/90 leading-tight">
-                              <Check className="w-3.5 h-3.5 text-cherry-600 shrink-0 mt-0.5" />
-                              <span>{spec}</span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
+                    {/* Background Photographic Image */}
+                    <div className="absolute inset-0 z-0 overflow-hidden">
+                      <img
+                        src={pillar.image}
+                        alt={pillar.title}
+                        className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 filter brightness-[0.88] contrast-[1.08]"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-black/60" />
                     </div>
 
-                    {/* Bottom Indicator */}
-                    <div className="mt-4 pt-3 border-t border-cream-200/80 flex items-center justify-between text-[11px] font-semibold text-cherry-600">
-                      {isActive ? (
-                        <>
-                          <div className="flex items-center gap-1.5">
-                            <span className="w-2 h-2 rounded-full bg-cherry-500 animate-ping" />
-                            <span className="font-bold">Active Selection</span>
-                          </div>
-                          <span className="text-[10px] text-burgundy-500 font-mono">Full specs</span>
-                        </>
-                      ) : (
-                        <>
-                          <div className="flex items-center gap-1.5 text-burgundy-600">
-                            <span className="w-1.5 h-1.5 rounded-full bg-cherry-400" />
-                            <span>Tap to pop</span>
-                          </div>
-                          <ChevronRight className="w-3.5 h-3.5 text-cherry-500" />
-                        </>
-                      )}
+                    {/* Foreground Content */}
+                    <div className="relative z-10 p-5 sm:p-6 flex flex-col justify-between h-full text-white">
+                      {/* Top Row: Icon + Number & Stat Badge */}
+                      <div className="flex items-center justify-between">
+                        <div className="w-11 h-11 rounded-2xl bg-black/60 backdrop-blur-md border border-white/30 text-white flex items-center justify-center shadow-md">
+                          <IconComponent className="w-5 h-5 text-cherry-300" />
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-mono text-xs font-bold px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30">
+                            0{idx + 1}
+                          </span>
+                          <span className="px-2.5 py-0.5 rounded-full font-bold text-[10px] sm:text-[11px] bg-cherry-600 text-white border border-cherry-300/40 shadow-sm">
+                            {pillar.stat}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Middle: Expand Indicator on Hover */}
+                      <div className="self-center w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all transform scale-75 group-hover:scale-100 shadow-xl">
+                        <Maximize2 className="w-5 h-5 text-white" />
+                      </div>
+
+                      {/* Bottom Info: Title & Click prompt */}
+                      <div>
+                        <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-amber-300 block mb-1">
+                          Pillar 0{idx + 1} • {pillar.shortName}
+                        </span>
+                        <h3 className="font-editorial text-lg sm:text-xl font-bold text-white mb-1.5 leading-snug drop-shadow-md">
+                          {pillar.title}
+                        </h3>
+                        <div className="pt-2.5 border-t border-white/20 flex items-center justify-between text-xs font-bold text-cream-200 group-hover:text-white transition-colors">
+                          <span className="flex items-center gap-1.5">
+                            <span className="w-2 h-2 rounded-full bg-cherry-400 animate-pulse" />
+                            <span>Click to View Details</span>
+                          </span>
+                          <ArrowRight className="w-4 h-4 text-cherry-400 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 );
@@ -405,10 +396,6 @@ export default function About({ onOpenEnquiry }) {
                 const IconComponent = pillar.icon;
                 const isActive = activeCard === idx;
 
-                // Base z-indices according to user specification:
-                // 3rd card (idx 2) is center: z-30
-                // 2nd (idx 1) & 4th (idx 3) partially inside 3rd: z-20
-                // 1st (idx 0) & 5th (idx 4) partially inside 2nd & 4th: z-10
                 let baseZ = 10;
                 if (idx === 2) baseZ = 30;
                 else if (idx === 1 || idx === 3) baseZ = 20;
@@ -423,98 +410,65 @@ export default function About({ onOpenEnquiry }) {
                 return (
                   <div
                     key={idx}
-                    onClick={() => setActiveCard(idx)}
+                    onClick={() => {
+                      setActiveCard(idx);
+                      setSelectedPillarIndex(idx);
+                    }}
                     style={{ zIndex }}
-                    className={`relative w-[280px] sm:w-[300px] xl:w-[320px] shrink-0 rounded-3xl p-6 transition-all duration-500 cursor-pointer select-none flex flex-col justify-between ${marginClass} ${
+                    className={`group relative w-[270px] sm:w-[290px] xl:w-[310px] h-[440px] xl:h-[460px] shrink-0 rounded-3xl overflow-hidden transition-all duration-500 cursor-pointer select-none flex flex-col justify-between ${marginClass} ${
                       isActive
-                        ? 'bg-white border-2 border-cherry-500 ring-4 ring-cherry-400/25 shadow-2xl -translate-y-4 scale-105 opacity-100'
-                        : 'bg-gradient-to-br from-cream-50 via-white to-cream-100/70 border border-cream-300 hover:border-cherry-300 shadow-lg hover:shadow-xl hover:-translate-y-1.5 opacity-90 hover:opacity-100'
+                        ? 'border-2 border-cherry-500 ring-4 ring-cherry-400/40 shadow-2xl -translate-y-4 scale-105 opacity-100'
+                        : 'border border-white/20 hover:border-cherry-300 shadow-lg hover:shadow-xl hover:-translate-y-1.5 opacity-90 hover:opacity-100'
                     }`}
                   >
-                    <div>
-                      {/* Top Icon & Tag */}
-                      <div className="flex items-center justify-between mb-4">
-                        <div
-                          className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-colors duration-300 shadow-sm ${
-                            isActive
-                              ? 'bg-cherry-600 text-white shadow-cherry-600/30'
-                              : 'bg-cherry-50 border border-cherry-100 text-cherry-600'
-                          }`}
-                        >
-                          <IconComponent className="w-6 h-6" />
-                        </div>
-                        <span
-                          className={`font-mono text-xs font-bold px-2.5 py-0.5 rounded-full transition-colors ${
-                            isActive
-                              ? 'bg-cherry-100 text-cherry-900 border border-cherry-300'
-                              : 'bg-cream-200 text-burgundy-900'
-                          }`}
-                        >
-                          0{idx + 1}
-                        </span>
-                      </div>
-
-                      {/* Metric Stat Pill */}
-                      <div
-                        className={`inline-block px-3 py-1 rounded-full font-semibold text-xs mb-3 border transition-colors ${
-                          isActive
-                            ? 'bg-cherry-700 text-white border-cherry-800 font-bold shadow-sm'
-                            : 'bg-cherry-50 text-cherry-900 border-cherry-200/70'
-                        }`}
-                      >
-                        {pillar.stat}
-                      </div>
-
-                      {/* Title */}
-                      <h3
-                        className={`font-editorial text-xl font-bold mb-2.5 leading-snug transition-colors ${
-                          isActive ? 'text-cherry-700' : 'text-burgundy-950'
-                        }`}
-                      >
-                        {pillar.title}
-                      </h3>
-
-                      {/* Description */}
-                      <p className="text-xs sm:text-[13px] text-burgundy-800/85 leading-relaxed font-bold mb-3">
-                        {pillar.desc}
-                      </p>
-
-                      {/* Popped Full Content Specifications (shown when active) */}
-                      {isActive && (
-                        <div className="mt-3 pt-3 border-t border-cream-200 space-y-2">
-                          <div className="text-[11px] font-bold text-burgundy-900 flex items-center gap-1.5">
-                            <ShieldCheck className="w-3.5 h-3.5 text-cherry-600" />
-                            <span>Technical Specifications</span>
-                          </div>
-                          {pillar.specs.map((spec, sIdx) => (
-                            <div key={sIdx} className="flex items-start gap-1.5 text-xs text-burgundy-800/90 leading-tight">
-                              <Check className="w-3.5 h-3.5 text-cherry-600 shrink-0 mt-0.5" />
-                              <span>{spec}</span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
+                    {/* Background Photographic Image */}
+                    <div className="absolute inset-0 z-0 overflow-hidden">
+                      <img
+                        src={pillar.image}
+                        alt={pillar.title}
+                        className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 filter brightness-[0.88] contrast-[1.08]"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-black/60" />
                     </div>
 
-                    {/* Bottom Indicator */}
-                    <div className="mt-5 pt-3.5 border-t border-cream-200/80 flex items-center justify-between text-[11px] font-semibold text-cherry-600">
-                      {isActive ? (
-                        <>
-                          <div className="flex items-center gap-1.5">
-                            <span className="w-2 h-2 rounded-full bg-cherry-500 animate-ping" />
-                            <span className="font-bold">Active Selection</span>
-                          </div>
-                          <span className="text-[10px] text-burgundy-500 font-mono">Full specs</span>
-                        </>
-                      ) : (
-                        <>
-                          <div className="flex items-center gap-1.5 text-burgundy-600">
-                            <span className="w-1.5 h-1.5 rounded-full bg-cherry-400" />
-                            <span>Click to pop content</span>
-                          </div>
-                          <ChevronRight className="w-3.5 h-3.5 text-cherry-500" />
-                        </>
-                      )}
+                    {/* Foreground Content */}
+                    <div className="relative z-10 p-5 sm:p-6 flex flex-col justify-between h-full text-white">
+                      {/* Top Row: Icon + Number & Stat Badge */}
+                      <div className="flex items-center justify-between">
+                        <div className="w-11 h-11 rounded-2xl bg-black/60 backdrop-blur-md border border-white/30 text-white flex items-center justify-center shadow-md">
+                          <IconComponent className="w-5 h-5 text-cherry-300" />
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-mono text-xs font-bold px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30">
+                            0{idx + 1}
+                          </span>
+                          <span className="px-2.5 py-0.5 rounded-full font-bold text-[10px] sm:text-[11px] bg-cherry-600 text-white border border-cherry-300/40 shadow-sm">
+                            {pillar.stat}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Middle: Expand Indicator on Hover */}
+                      <div className="self-center w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all transform scale-75 group-hover:scale-100 shadow-xl">
+                        <Maximize2 className="w-5 h-5 text-white" />
+                      </div>
+
+                      {/* Bottom Info: Title & Click prompt */}
+                      <div>
+                        <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-amber-300 block mb-1">
+                          Pillar 0{idx + 1} • {pillar.shortName}
+                        </span>
+                        <h3 className="font-editorial text-lg sm:text-xl font-bold text-white mb-1.5 leading-snug drop-shadow-md">
+                          {pillar.title}
+                        </h3>
+                        <div className="pt-2.5 border-t border-white/20 flex items-center justify-between text-xs font-bold text-cream-200 group-hover:text-white transition-colors">
+                          <span className="flex items-center gap-1.5">
+                            <span className="w-2 h-2 rounded-full bg-cherry-400 animate-pulse" />
+                            <span>Click to View Details</span>
+                          </span>
+                          <ArrowRight className="w-4 h-4 text-cherry-400 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 );
@@ -524,6 +478,128 @@ export default function About({ onOpenEnquiry }) {
 
         </div>
       </section>
+
+      {/* 2.1 Rich Pillar Details Modal / Lightbox */}
+      {selectedPillarIndex !== null && (
+        <div
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
+          onClick={() => setSelectedPillarIndex(null)}
+        >
+          {(() => {
+            const activePillar = pillarsOfRigor[selectedPillarIndex];
+
+            return (
+              <div
+                className="relative w-full max-w-3xl bg-white rounded-3xl overflow-hidden shadow-2xl border border-cream-300 max-h-[92vh] flex flex-col my-auto"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Modal Header */}
+                <div className="p-5 sm:p-6 bg-burgundy-950 text-white flex items-start justify-between border-b border-cherry-900/40">
+                  <div className="pr-6">
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <span className="px-3 py-1 rounded-full bg-cherry-600 text-white text-[11px] font-bold uppercase tracking-wider">
+                        Pillar 0{selectedPillarIndex + 1}
+                      </span>
+                      <span className="px-3 py-1 rounded-full bg-white/10 text-amber-300 border border-white/20 text-[11px] font-bold">
+                        {activePillar.stat}
+                      </span>
+                    </div>
+                    <h3 className="font-editorial text-xl sm:text-2xl lg:text-3xl font-bold text-white leading-snug">
+                      {activePillar.title}
+                    </h3>
+                  </div>
+
+                  {/* Close Button */}
+                  <button
+                    onClick={() => setSelectedPillarIndex(null)}
+                    className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors border border-white/20 shrink-0"
+                    aria-label="Close details"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+
+                {/* Modal Body (Scrollable) */}
+                <div className="p-5 sm:p-7 overflow-y-auto space-y-6 flex-1">
+                  
+                  {/* Image Preview with Floating Badge */}
+                  <div className="rounded-2xl overflow-hidden aspect-[16/9] bg-burgundy-950 relative shadow-md">
+                    <img
+                      src={activePillar.image}
+                      alt={activePillar.title}
+                      className="w-full h-full object-cover object-center"
+                    />
+                    <div className="absolute bottom-3 left-3 px-3.5 py-1.5 rounded-xl bg-black/75 backdrop-blur-md border border-white/20 text-white text-xs font-bold flex items-center gap-2 shadow-lg">
+                      <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                      <span>Certified Production Infrastructure</span>
+                    </div>
+                  </div>
+
+                  {/* Narrative Description */}
+                  <div>
+                    <h4 className="text-xs uppercase tracking-widest font-bold text-cherry-700 mb-2">
+                      Engineering & Architectural Scope
+                    </h4>
+                    <p className="text-sm sm:text-base text-burgundy-950 font-normal leading-relaxed">
+                      {activePillar.desc}
+                    </p>
+                  </div>
+
+                  {/* Technical Specifications Checklist */}
+                  <div className="bg-cream-50 rounded-2xl p-5 sm:p-6 border border-cream-200 space-y-3">
+                    <h4 className="font-editorial text-lg font-bold text-burgundy-950 flex items-center gap-2">
+                      <ShieldCheck className="w-4 h-4 text-cherry-600" />
+                      <span>Technical Rigor & Specifications</span>
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                      {activePillar.specs.map((spec, sIdx) => (
+                        <div key={sIdx} className="flex items-start gap-2.5 text-xs text-burgundy-900 leading-relaxed font-medium">
+                          <CheckCircle2 className="w-4 h-4 text-cherry-600 shrink-0 mt-0.5" />
+                          <span>{spec}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                </div>
+
+                {/* Modal Footer Controls */}
+                <div className="p-4 sm:p-6 bg-cream-100 border-t border-cream-200 flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => setSelectedPillarIndex((prev) => (prev === 0 ? pillarsOfRigor.length - 1 : prev - 1))}
+                      className="px-3.5 py-2 rounded-xl bg-white hover:bg-cream-200 text-burgundy-900 text-xs font-semibold border border-cream-300 transition-colors flex items-center gap-1.5 shadow-xs"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                      <span>Previous</span>
+                    </button>
+                    <button
+                      onClick={() => setSelectedPillarIndex((prev) => (prev + 1) % pillarsOfRigor.length)}
+                      className="px-3.5 py-2 rounded-xl bg-white hover:bg-cream-200 text-burgundy-900 text-xs font-semibold border border-cream-300 transition-colors flex items-center gap-1.5 shadow-xs"
+                    >
+                      <span>Next</span>
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      const title = activePillar.title;
+                      setSelectedPillarIndex(null);
+                      if (onOpenEnquiry) onOpenEnquiry({ service: `Inquiry for ${title}` });
+                    }}
+                    className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-gradient-to-r from-cherry-600 to-burgundy-800 hover:from-cherry-500 hover:to-burgundy-700 text-white font-bold text-xs sm:text-sm shadow-warm-sm transition-all flex items-center justify-center gap-2"
+                  >
+                    <span>Consult On This Capability</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+
+              </div>
+            );
+          })()}
+        </div>
+      )}
 
       {/* 3. Founder Leadership & Company Story */}
       <section className="py-16 sm:py-24 bg-gradient-to-b from-burgundy-950 via-burgundy-900 to-burgundy-950 text-white relative overflow-hidden border-y border-cherry-900/40">
