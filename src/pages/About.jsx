@@ -280,9 +280,9 @@ export default function About({ onOpenEnquiry }) {
                         className="w-full h-full object-cover filter brightness-[0.88] contrast-[1.08]"
                       />
                       <div
-                        className={`absolute inset-0 transition-opacity duration-500 ${
+                        className={`absolute inset-0 transition-all duration-500 ${
                           isActive
-                            ? 'bg-gradient-to-t from-black/98 via-black/85 to-black/60'
+                            ? 'bg-black/80 backdrop-blur-[1px]'
                             : 'bg-gradient-to-t from-black/90 via-black/30 to-black/40'
                         }`}
                       />
@@ -293,48 +293,48 @@ export default function About({ onOpenEnquiry }) {
                       <div>
                         {/* Top Row: Icon + Number & Stat Badge */}
                         <div className="flex items-center justify-between mb-3">
-                          <div className="w-10 h-10 rounded-2xl bg-black/60 backdrop-blur-md border border-white/30 text-white flex items-center justify-center shadow-md">
+                          <div className="w-10 h-10 rounded-2xl bg-black/70 backdrop-blur-md border border-white/30 text-white flex items-center justify-center shadow-md">
                             <IconComponent className="w-5 h-5 text-cherry-300" />
                           </div>
                           <div className="flex items-center gap-1.5">
-                            <span className="font-mono text-xs font-bold px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30">
+                            <span className="font-mono text-xs font-bold px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/30 shadow-sm">
                               0{idx + 1}
                             </span>
-                            <span className="px-2.5 py-0.5 rounded-full font-bold text-[10px] sm:text-[11px] bg-cherry-600 text-white border border-cherry-300/40 shadow-sm">
+                            <span className="px-2.5 py-0.5 rounded-full font-bold text-[10px] sm:text-[11px] bg-cherry-600 text-white border border-cherry-300/50 shadow-sm">
                               {pillar.stat}
                             </span>
                           </div>
                         </div>
 
                         {/* Title & Category */}
-                        <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-amber-300 block mb-1">
+                        <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-amber-300 block mb-1 drop-shadow-md">
                           Pillar 0{idx + 1} • {pillar.shortName}
                         </span>
-                        <h3 className="font-editorial text-lg sm:text-xl font-bold text-white mb-2 leading-snug drop-shadow-md">
+                        <h3 className="font-editorial text-lg sm:text-xl font-bold text-white mb-2.5 leading-snug drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
                           {pillar.title}
                         </h3>
 
-                        {/* When Active: Reveal Important Details in the image itself */}
+                        {/* When Active: Reveal Important Details with crystal clear visibility */}
                         {isActive ? (
-                          <div className="space-y-2.5 animate-fadeIn">
-                            <p className="text-xs text-cream-100 font-normal leading-relaxed line-clamp-3">
+                          <div className="animate-fadeIn bg-black/80 backdrop-blur-md rounded-2xl p-3.5 border border-white/25 shadow-2xl space-y-2.5">
+                            <p className="text-xs sm:text-[13px] text-white font-medium leading-relaxed drop-shadow-sm">
                               {pillar.desc}
                             </p>
 
                             <div className="space-y-1.5 pt-2 border-t border-white/20">
-                              <span className="text-[10px] uppercase tracking-wider font-bold text-cherry-300 block">
+                              <span className="text-[10px] uppercase tracking-wider font-bold text-amber-300 block">
                                 Technical Specifications
                               </span>
                               {pillar.specs.slice(0, 3).map((spec, sIdx) => (
-                                <div key={sIdx} className="flex items-start gap-1.5 text-xs text-cream-200 leading-tight">
-                                  <CheckCircle2 className="w-3.5 h-3.5 text-cherry-400 shrink-0 mt-0.5" />
-                                  <span className="line-clamp-1">{spec}</span>
+                                <div key={sIdx} className="flex items-start gap-1.5 text-xs text-white font-medium leading-tight">
+                                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                                  <span className="drop-shadow-sm line-clamp-1">{spec}</span>
                                 </div>
                               ))}
                             </div>
                           </div>
                         ) : (
-                          <p className="text-xs text-cream-200/90 leading-relaxed font-medium line-clamp-2">
+                          <p className="text-xs text-cream-100/90 leading-relaxed font-medium line-clamp-2 drop-shadow-sm">
                             {pillar.desc}
                           </p>
                         )}
@@ -343,9 +343,9 @@ export default function About({ onOpenEnquiry }) {
                       {/* Bottom Row */}
                       <div className="pt-3 border-t border-white/20 flex items-center justify-between text-xs font-bold text-cream-100">
                         {isActive ? (
-                          <div className="flex items-center gap-1.5 text-amber-300">
+                          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-cherry-950/80 border border-cherry-400/40 text-cherry-200 shadow-md">
                             <span className="w-2 h-2 rounded-full bg-cherry-400 animate-pulse" />
-                            <span>Active Details</span>
+                            <span className="text-[11px] font-semibold text-cherry-200">Active Details</span>
                           </div>
                         ) : (
                           <div className="flex items-center justify-between w-full text-cream-200 group-hover:text-white transition-colors">
@@ -438,9 +438,9 @@ export default function About({ onOpenEnquiry }) {
                         className="w-full h-full object-cover filter brightness-[0.88] contrast-[1.08]"
                       />
                       <div
-                        className={`absolute inset-0 transition-opacity duration-500 ${
+                        className={`absolute inset-0 transition-all duration-500 ${
                           isActive
-                            ? 'bg-gradient-to-t from-black/98 via-black/85 to-black/60'
+                            ? 'bg-black/80 backdrop-blur-[1px]'
                             : 'bg-gradient-to-t from-black/90 via-black/30 to-black/40'
                         }`}
                       />
@@ -451,48 +451,48 @@ export default function About({ onOpenEnquiry }) {
                       <div>
                         {/* Top Row: Icon + Number & Stat Badge */}
                         <div className="flex items-center justify-between mb-3">
-                          <div className="w-10 h-10 rounded-2xl bg-black/60 backdrop-blur-md border border-white/30 text-white flex items-center justify-center shadow-md">
+                          <div className="w-10 h-10 rounded-2xl bg-black/70 backdrop-blur-md border border-white/30 text-white flex items-center justify-center shadow-md">
                             <IconComponent className="w-5 h-5 text-cherry-300" />
                           </div>
                           <div className="flex items-center gap-1.5">
-                            <span className="font-mono text-xs font-bold px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30">
+                            <span className="font-mono text-xs font-bold px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/30 shadow-sm">
                               0{idx + 1}
                             </span>
-                            <span className="px-2.5 py-0.5 rounded-full font-bold text-[10px] sm:text-[11px] bg-cherry-600 text-white border border-cherry-300/40 shadow-sm">
+                            <span className="px-2.5 py-0.5 rounded-full font-bold text-[10px] sm:text-[11px] bg-cherry-600 text-white border border-cherry-300/50 shadow-sm">
                               {pillar.stat}
                             </span>
                           </div>
                         </div>
 
                         {/* Title & Category */}
-                        <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-amber-300 block mb-1">
+                        <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-amber-300 block mb-1 drop-shadow-md">
                           Pillar 0{idx + 1} • {pillar.shortName}
                         </span>
-                        <h3 className="font-editorial text-lg sm:text-xl font-bold text-white mb-2 leading-snug drop-shadow-md">
+                        <h3 className="font-editorial text-lg sm:text-xl font-bold text-white mb-2.5 leading-snug drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
                           {pillar.title}
                         </h3>
 
-                        {/* When Active: Reveal Important Details in the image itself */}
+                        {/* When Active: Reveal Important Details with crystal clear visibility */}
                         {isActive ? (
-                          <div className="space-y-2.5 animate-fadeIn">
-                            <p className="text-xs text-cream-100 font-normal leading-relaxed line-clamp-3">
+                          <div className="animate-fadeIn bg-black/80 backdrop-blur-md rounded-2xl p-3.5 border border-white/25 shadow-2xl space-y-2.5">
+                            <p className="text-xs sm:text-[13px] text-white font-medium leading-relaxed drop-shadow-sm">
                               {pillar.desc}
                             </p>
 
                             <div className="space-y-1.5 pt-2 border-t border-white/20">
-                              <span className="text-[10px] uppercase tracking-wider font-bold text-cherry-300 block">
+                              <span className="text-[10px] uppercase tracking-wider font-bold text-amber-300 block">
                                 Technical Specifications
                               </span>
                               {pillar.specs.slice(0, 3).map((spec, sIdx) => (
-                                <div key={sIdx} className="flex items-start gap-1.5 text-xs text-cream-200 leading-tight">
-                                  <CheckCircle2 className="w-3.5 h-3.5 text-cherry-400 shrink-0 mt-0.5" />
-                                  <span className="line-clamp-1">{spec}</span>
+                                <div key={sIdx} className="flex items-start gap-1.5 text-xs text-white font-medium leading-tight">
+                                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                                  <span className="drop-shadow-sm line-clamp-1">{spec}</span>
                                 </div>
                               ))}
                             </div>
                           </div>
                         ) : (
-                          <p className="text-xs text-cream-200/90 leading-relaxed font-medium line-clamp-2">
+                          <p className="text-xs text-cream-100/90 leading-relaxed font-medium line-clamp-2 drop-shadow-sm">
                             {pillar.desc}
                           </p>
                         )}
@@ -501,9 +501,9 @@ export default function About({ onOpenEnquiry }) {
                       {/* Bottom Row */}
                       <div className="pt-3 border-t border-white/20 flex items-center justify-between text-xs font-bold text-cream-100">
                         {isActive ? (
-                          <div className="flex items-center gap-1.5 text-amber-300">
+                          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-cherry-950/80 border border-cherry-400/40 text-cherry-200 shadow-md">
                             <span className="w-2 h-2 rounded-full bg-cherry-400 animate-pulse" />
-                            <span>Active Details</span>
+                            <span className="text-[11px] font-semibold text-cherry-200">Active Details</span>
                           </div>
                         ) : (
                           <div className="flex items-center justify-between w-full text-cream-200 group-hover:text-white transition-colors">
