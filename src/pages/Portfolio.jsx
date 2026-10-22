@@ -323,7 +323,7 @@ export default function Portfolio({ onOpenEnquiry }) {
       {/* 2. Pure Images Gallery Grid */}
       <section className="py-12 sm:py-16 lg:py-20">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {filteredProjects.map((item, idx) => (
               <div
                 key={item.id}
