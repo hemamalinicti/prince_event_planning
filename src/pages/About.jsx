@@ -9,7 +9,7 @@ import {
   Volume2, 
   Award, 
   Clock, 
-  FileCheck2, 
+  Quote, 
   Zap,
   SunMedium,
   Check
@@ -39,24 +39,6 @@ export default function About({ onOpenEnquiry }) {
     }
   ];
 
-  const safetyStandards = [
-    {
-      title: 'Temporary Staging & Rigging Standard',
-      desc: 'Rigorous European standard compliance for load-bearing trussing, cantilevered roof systems, and wind shear calculation up to 65 km/h.'
-    },
-    {
-      title: 'Flame-Retardant Fabric Certification',
-      desc: 'All drapery, velvet masking, and fabric ceiling silks are chemically treated and certified flame-resistant for indoor and outdoor safety.'
-    },
-    {
-      title: 'Precision Acoustic Spectrum Calibration',
-      desc: 'Concert line arrays tuned with sound-level limits and acoustic baffling to ensure punchy vocal clarity without harsh venue resonance.'
-    },
-    {
-      title: 'Quality Rigging Hardware & Redundancy',
-      desc: 'Every shackle, steel wire rope, and electric motor undergoes regular magnetic particle testing with complete safety logs.'
-    }
-  ];
 
   const [activeCard, setActiveCard] = useState(2); // 3rd card centered and popped by default
   const [touchStartX, setTouchStartX] = useState(null);
@@ -543,42 +525,107 @@ export default function About({ onOpenEnquiry }) {
         </div>
       </section>
 
-      {/* 3. Certified Safety & Engineering Standards Strip */}
-      <section className="py-16 sm:py-20 bg-burgundy-950 text-white relative overflow-hidden">
+      {/* 3. Founder Leadership & Company Story */}
+      <section className="py-16 sm:py-24 bg-gradient-to-b from-burgundy-950 via-burgundy-900 to-burgundy-950 text-white relative overflow-hidden border-y border-cherry-900/40">
+        {/* Subtle decorative background glows */}
+        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-cherry-600/15 blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
+
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
           
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs text-white font-semibold mb-3">
-              <FileCheck2 className="w-3.5 h-3.5 text-cherry-400" />
-              <span>certified compliance</span>
-            </div>
-            <h2 className="font-editorial text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
-              Safety Protocols We Refuse to Compromise On
-            </h2>
-            <p className="text-xs sm:text-sm text-cream-200/80 max-w-xl mx-auto">
-              In high-stakes public gatherings and VIP weddings, safety is our paramount commitment. We operate strictly within recognized national and international staging standards.
-            </p>
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            {/* Left Column: Founder Photo & Badge (5 Cols) */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative rounded-3xl overflow-hidden border-2 border-cherry-500/30 shadow-2xl bg-burgundy-900 group">
+                <img
+                  src="/founder.jpg"
+                  alt="Founder & Managing Director - Prince Engineering & Events"
+                  className="w-full aspect-[4/5] object-cover object-top group-hover:scale-103 transition-transform duration-700"
+                />
+                
+                {/* Subtle protective gradient overlay at bottom */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
-            {safetyStandards.map((std, idx) => (
-              <div 
-                key={idx}
-                className="bg-white/5 backdrop-blur-sm border border-white/15 rounded-2xl p-4 sm:p-6 hover:bg-white/10 transition-colors flex flex-col justify-between"
-              >
-                <div>
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-cherry-500/20 border border-cherry-500/30 text-cherry-400 flex items-center justify-center font-mono text-[10px] sm:text-xs font-bold mb-2.5 sm:mb-3">
-                    0{idx + 1}
+                {/* Founder Info Overlay Card */}
+                <div className="absolute bottom-4 left-4 right-4 p-4 sm:p-5 rounded-2xl bg-black/60 backdrop-blur-md border border-white/20 text-white shadow-lg">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="w-2 h-2 rounded-full bg-cherry-400 animate-pulse" />
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-amber-300">
+                      Founder & Managing Director
+                    </span>
                   </div>
-                  <h4 className="font-editorial text-sm sm:text-lg font-bold text-white mb-1.5 sm:mb-2 leading-snug">
-                    {std.title}
-                  </h4>
-                  <p className="text-[11px] sm:text-xs text-cream-200/80 leading-relaxed font-bold">
-                    {std.desc}
+                  <h3 className="font-editorial text-xl sm:text-2xl font-bold text-white">
+                    Prince Raj
+                  </h3>
+                  <p className="text-xs text-cream-200/90 mt-0.5">
+                    Chief Event Architect & Structural Production Lead
                   </p>
                 </div>
               </div>
-            ))}
+
+              {/* Decorative Experience Badge Floating */}
+              <div className="hidden sm:flex absolute -top-3 -right-3 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-cherry-600 to-burgundy-800 text-white border border-cherry-300/40 shadow-xl items-center gap-2.5">
+                <Award className="w-5 h-5 text-amber-300" />
+                <div className="text-left">
+                  <div className="text-xs font-bold leading-none">12+ Years</div>
+                  <div className="text-[10px] text-cream-200">Industry Leadership</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Company Details & Vision (7 Cols) */}
+            <div className="lg:col-span-7 space-y-6">
+              
+              <div>
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs text-cherry-300 font-bold mb-3 shadow-xs">
+                  <Sparkles className="w-3.5 h-3.5 text-cherry-400" />
+                  <span>Leadership & Company Story</span>
+                </div>
+                <h2 className="font-editorial text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
+                  Uniting Royal Splendor with Certified Structural Rigor
+                </h2>
+              </div>
+
+              <div className="space-y-4 text-xs sm:text-sm md:text-base text-cream-100/90 leading-relaxed font-normal">
+                <p>
+                  Established in Tamil Nadu with flagship headquarters in Coimbatore, <strong className="text-white font-semibold">Prince Engineering & Events</strong> was founded with a singular conviction: extraordinary celebratory experiences must be engineered with unwavering structural integrity and flawless aesthetic mastery.
+                </p>
+                <p>
+                  Unlike traditional event agencies that outsource hardware, Prince operates an end-to-end proprietary infrastructure—encompassing German TÜV-certified heavy box trussing, precision line-array concert acoustics, high-resolution curved 4K LED arrays, and bespoke artisanal set construction ateliers.
+                </p>
+              </div>
+
+              {/* Key Company Credentials Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 pt-1">
+                <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                  <div className="text-xl sm:text-2xl font-bold text-white font-editorial">550+</div>
+                  <div className="text-[11px] sm:text-xs text-cream-200/80 font-medium mt-0.5">Landmark Productions</div>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                  <div className="text-xl sm:text-2xl font-bold text-amber-300 font-editorial">100%</div>
+                  <div className="text-[11px] sm:text-xs text-cream-200/80 font-medium mt-0.5">Safety & Zero Failover</div>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm col-span-2 sm:col-span-1">
+                  <div className="text-xl sm:text-2xl font-bold text-cherry-400 font-editorial">Pan-South</div>
+                  <div className="text-[11px] sm:text-xs text-cream-200/80 font-medium mt-0.5">TN, Kerala & Karnataka</div>
+                </div>
+              </div>
+
+              {/* Founder's Philosophy Quote */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-white/5 border-l-4 border-cherry-500 backdrop-blur-sm relative">
+                <Quote className="w-5 h-5 text-cherry-400 mb-2 opacity-80" />
+                <p className="font-editorial italic text-sm sm:text-base text-cream-100 leading-relaxed">
+                  "Every royal wedding and corporate summit is a milestone in someone's legacy. We treat every floral canopy and heavy stage truss with equal reverence, architectural precision, and devotion to perfection."
+                </p>
+                <div className="mt-3 flex items-center justify-between text-xs text-cream-200/80">
+                  <span className="font-semibold text-white">— Prince Raj, Founder & Director</span>
+                  <span className="text-[11px] text-cherry-300">Coimbatore Flagship HQ</span>
+                </div>
+              </div>
+
+            </div>
+
           </div>
 
         </div>
