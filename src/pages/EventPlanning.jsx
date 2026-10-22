@@ -28,13 +28,11 @@ export default function EventPlanning({ onOpenEnquiry }) {
       icon: Crown,
       badge: 'Signature Royal Experience',
       bgImage: '/royal-wedding-palace.jpg',
-      desc: 'From palatial Chettinad heritage courtyards to grand five-star ballroom mandaps, we design wedding environments that honor sacred South Indian customs while delivering palatial grandeur.',
+      desc: 'From palatial Chettinad courtyards to grand five-star ballrooms, we craft sacred wedding environments with architectural grandeur.',
       features: [
         'Bespoke hand-carved mandaps with customized floral canopies',
         'Precision sacred muhurtham choreography and VIP elder hospitality',
-        'Acoustically balanced nadaswaram and carnatic concert audio',
-        'Traditional brass kuthuvilakku lighting paired with architectural warm ambient wash',
-        'Dedicated bridal and groom shadow concierge teams'
+        'Traditional brass kuthuvilakku lighting with architectural ambient wash'
       ]
     },
     {
@@ -44,13 +42,11 @@ export default function EventPlanning({ onOpenEnquiry }) {
       icon: Compass,
       badge: 'Turnkey Destination Protocol',
       bgImage: '/destination-coastal.png',
-      desc: 'Seamless destination wedding logistics where unpredictable outdoor environments (high coastal winds, sudden hill-station rains) are neutralized by our certified engineering team.',
+      desc: 'Seamless destination wedding logistics across beaches and hill stations, backed by wind and weather engineering.',
       features: [
-        'Wind-engineered cantilevered beachfront canopies tested to 65 km/h',
-        'Complete guest hospitality, airport charter fleets, and hotel room blocking',
-        'Weatherproof outdoor audio/visual systems with instant rain-cover protocols',
-        'Intimate hillside vineyard and coffee estate lighting setups',
-        'End-to-end local authority licensing and sound-level clearances'
+        'Wind-engineered cantilevered beachfront canopies tested up to 65 km/h',
+        'Guest hospitality, airport charter fleets, and hotel room blocking',
+        'All-weather audio/visual systems with instant rain-cover protocols'
       ]
     },
     {
@@ -60,13 +56,11 @@ export default function EventPlanning({ onOpenEnquiry }) {
       icon: Briefcase,
       badge: 'Enterprise Reliability',
       bgImage: '/corporate-conventions.jpg',
-      desc: 'Flawless production for 500 to 5,000+ delegates. We provide high-impact 4K curved LED walls, broadcast live-streaming, zero-delay microphones, and executive green rooms.',
+      desc: 'Flawless production for 500 to 5,000+ delegates with zero-latency audio and ultra-fine pitch 4K curved LED backdrops.',
       features: [
-        'Curved ultra-fine pitch 4K LED video backdrops with multi-window PIP',
-        'Zero-echo line-array acoustics for keynote speakers and panel discussions',
-        '0-Second silent diesel power redundancy for uninterrupted global presentations',
-        'Turnkey delegate registration desks, RFID badging, and stage podiums',
-        'Strict NDA compliance and executive security perimeter design'
+        'Curved 4K LED video backdrops with multi-window PIP presentations',
+        'Zero-echo line-array acoustics for keynote speakers and panels',
+        '0-Second silent diesel power redundancy for continuous live sessions'
       ]
     },
     {
@@ -76,13 +70,11 @@ export default function EventPlanning({ onOpenEnquiry }) {
       icon: Music,
       badge: 'Concert Spectacle',
       bgImage: '/sangeet-celebrations.jpg',
-      desc: 'Transform evening celebrations into electrifying concert arena experiences with moving-head intelligent lighting, synchronized cold pyrotechnics, and custom bar lounges.',
+      desc: 'Electrifying concert arena experiences with moving-head intelligent lighting, cold pyrotechnics, and custom lounges.',
       features: [
         'Concert-grade dance staging with anti-slip polished acrylic flooring',
         'DMX computerized moving beam lights, lasers, and cold-spark fountains',
-        'Celebrity artist, DJ, and playback singer hospitality riders',
-        'Bespoke cocktail lounges, floral photo-ops, and immersive tunnel entrances',
-        'Zero-distortion subwoofer low-frequency audio mapping'
+        'Bespoke cocktail lounges, floral photo-ops, and immersive tunnels'
       ]
     }
   ];
@@ -172,24 +164,24 @@ export default function EventPlanning({ onOpenEnquiry }) {
       </section>
 
       {/* 2. Signature Celebration Categories - Light Pink Luxury Background */}
-      <section className="py-20 lg:py-28 bg-gradient-to-b from-[#FFF0F4] via-[#FFEAEF] to-[#FFF0F4] border-b border-cherry-200/60">
+      <section className="py-14 sm:py-16 lg:py-20 bg-gradient-to-b from-[#FFF0F4] via-[#FFEAEF] to-[#FFF0F4] border-b border-cherry-200/60">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cherry-100/80 border border-cherry-200 text-cherry-700 text-xs font-semibold uppercase tracking-wider mb-4 shadow-xs">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cherry-100/80 border border-cherry-200 text-cherry-700 text-xs font-semibold uppercase tracking-wider mb-3 shadow-xs">
               <Sparkles className="w-3.5 h-3.5 text-cherry-600" />
               Turnkey Management
             </div>
-            <h2 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-bold text-burgundy-950 tracking-tight leading-tight mb-4">
+            <h2 className="font-editorial text-2xl sm:text-3xl md:text-4xl font-bold text-burgundy-950 tracking-tight leading-tight mb-3">
               Celebrations Crafted Without Compromise
             </h2>
-            <p className="text-sm sm:text-base text-burgundy-800/80 leading-relaxed">
+            <p className="text-xs sm:text-sm text-burgundy-800/80 leading-relaxed">
               Every genre of gathering receives our hallmark devotion: royal aesthetics anchored by certified engineering reliability.
             </p>
           </div>
 
           {/* Category Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-8 sm:mb-10">
             {categories.map((cat, idx) => {
               const Icon = cat.icon;
               const isActive = activeCategory === idx;
@@ -197,24 +189,24 @@ export default function EventPlanning({ onOpenEnquiry }) {
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(idx)}
-                  className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 ${
+                  className={`flex items-center gap-2 px-3.5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 ${
                     isActive
                       ? 'bg-cherry-600 text-white shadow-md shadow-cherry-600/30 scale-105'
                       : 'bg-white/90 text-burgundy-900 hover:bg-white hover:text-cherry-700 border border-cherry-200/70 shadow-xs'
                   }`}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-3.5 h-3.5" />
                   <span>{cat.title.split('&')[0].trim()}</span>
                 </button>
               );
             })}
           </div>
 
-          {/* Active Category Display: 1 Side Image, 1 Side Content */}
-          <div className="relative isolate rounded-3xl overflow-hidden bg-white border border-cherry-200/80 shadow-[0_20px_50px_rgba(201,24,74,0.10)] max-w-6xl mx-auto flex flex-col lg:flex-row items-stretch">
+          {/* Active Category Display: 1 Side Image, 1 Side Content (Compact Height) */}
+          <div className="relative isolate rounded-2xl overflow-hidden bg-white border border-cherry-200/80 shadow-[0_16px_40px_rgba(201,24,74,0.08)] max-w-5xl mx-auto flex flex-col lg:flex-row items-stretch">
             
             {/* 1 Side: Dedicated Photographic Showcase */}
-            <div className="w-full lg:w-1/2 relative min-h-[360px] sm:min-h-[440px] lg:min-h-[580px] overflow-hidden group bg-burgundy-950">
+            <div className="w-full lg:w-1/2 relative min-h-[250px] sm:min-h-[290px] lg:min-h-[390px] overflow-hidden group bg-burgundy-950">
               <img
                 key={categories[activeCategory].bgImage}
                 src={categories[activeCategory].bgImage || "/royal-wedding-palace.jpg"}
@@ -224,66 +216,66 @@ export default function EventPlanning({ onOpenEnquiry }) {
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent pointer-events-none" />
               
               {/* Top Floating Badge */}
-              <div className="absolute top-4 sm:top-5 left-4 sm:left-5 flex items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/65 backdrop-blur-md text-amber-300 text-xs font-bold border border-amber-300/40 shadow-lg">
-                  <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <div className="absolute top-3.5 left-3.5 flex items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/65 backdrop-blur-md text-amber-300 text-[11px] font-bold border border-amber-300/40 shadow-md">
+                  <Sparkles className="w-3 h-3 text-amber-400" />
                   {categories[activeCategory].badge}
                 </span>
               </div>
 
               {/* Bottom Image Caption & Category Number */}
-              <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 text-white pointer-events-none">
-                <span className="text-[11px] font-mono uppercase tracking-wider text-amber-300 font-bold block mb-1">
+              <div className="absolute bottom-3.5 left-3.5 right-3.5 text-white pointer-events-none">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-amber-300 font-bold block mb-0.5">
                   Category 0{activeCategory + 1} • Signature Build
                 </span>
-                <p className="font-editorial text-lg sm:text-xl font-bold text-white drop-shadow-md leading-snug">
+                <p className="font-editorial text-base sm:text-lg font-bold text-white drop-shadow-md leading-snug">
                   {categories[activeCategory].title}
                 </p>
               </div>
             </div>
 
             {/* Other Side: Complete Details & Inclusions Content */}
-            <div className="w-full lg:w-1/2 p-6 sm:p-8 lg:p-10 flex flex-col justify-between bg-white">
+            <div className="w-full lg:w-1/2 p-5 sm:p-6 lg:p-7 flex flex-col justify-between bg-white">
               <div>
                 {/* Top Meta Bar */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cherry-50 text-cherry-700 text-xs font-bold border border-cherry-200">
-                    <Crown className="w-3.5 h-3.5 text-cherry-600" />
-                    Turnkey Event Production
+                <div className="flex items-center justify-between mb-2.5">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cherry-50 text-cherry-700 text-[11px] font-bold border border-cherry-200">
+                    <Crown className="w-3 h-3 text-cherry-600" />
+                    Turnkey Production
                   </span>
-                  <span className="text-xs font-mono font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200">
+                  <span className="text-[11px] font-mono font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">
                     Category 0{activeCategory + 1}
                   </span>
                 </div>
 
                 {/* Title & Subtitle */}
-                <h3 className="font-editorial text-2xl sm:text-3xl font-bold text-burgundy-950 mb-2 leading-tight">
+                <h3 className="font-editorial text-xl sm:text-2xl font-bold text-burgundy-950 mb-1 leading-snug">
                   {categories[activeCategory].title}
                 </h3>
-                <div className="text-xs sm:text-sm font-semibold text-cherry-700 uppercase tracking-wider mb-3">
+                <div className="text-xs font-semibold text-cherry-700 uppercase tracking-wider mb-2">
                   {categories[activeCategory].subtitle}
                 </div>
 
                 {/* Narrative Description */}
-                <p className="text-xs sm:text-sm text-burgundy-800/85 leading-relaxed font-medium mb-6">
+                <p className="text-xs sm:text-[13px] text-burgundy-800/85 leading-relaxed font-medium mb-3.5">
                   {categories[activeCategory].desc}
                 </p>
 
                 {/* Inclusions & Logistics Section */}
-                <div className="pt-4 border-t border-cream-200">
-                  <div className="text-xs font-bold uppercase tracking-wider text-burgundy-900 mb-3 flex items-center justify-between">
-                    <span className="font-editorial text-sm sm:text-base font-bold text-burgundy-950">
+                <div className="pt-3 border-t border-cream-200">
+                  <div className="text-[11px] font-bold uppercase tracking-wider text-burgundy-900 mb-2 flex items-center justify-between">
+                    <span className="font-editorial text-xs sm:text-sm font-bold text-burgundy-950">
                       Turnkey Inclusions & Logistics
                     </span>
-                    <span className="text-[11px] font-mono text-cherry-700 font-semibold">
-                      5 Key Deliverables
+                    <span className="text-[10px] font-mono text-cherry-700 font-semibold">
+                      Key Deliverables
                     </span>
                   </div>
 
-                  <div className="space-y-2.5">
+                  <div className="space-y-2">
                     {categories[activeCategory].features.map((feat, fIdx) => (
-                      <div key={fIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-burgundy-900 font-medium leading-relaxed">
-                        <CheckCircle2 className="w-4 h-4 text-cherry-600 shrink-0 mt-0.5" />
+                      <div key={fIdx} className="flex items-start gap-2 text-xs text-burgundy-900 font-medium leading-snug">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-cherry-600 shrink-0 mt-0.5" />
                         <span>{feat}</span>
                       </div>
                     ))}
@@ -292,17 +284,17 @@ export default function EventPlanning({ onOpenEnquiry }) {
               </div>
 
               {/* Bottom Actions & Supervision Note */}
-              <div className="pt-6 mt-6 border-t border-cream-200 space-y-3.5">
+              <div className="pt-3.5 mt-3.5 border-t border-cream-200 space-y-2.5">
                 <button
                   onClick={() => onOpenEnquiry && onOpenEnquiry({ service: categories[activeCategory].title })}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-cherry-600 hover:bg-cherry-700 text-white font-semibold text-xs sm:text-sm transition-all shadow-md hover:shadow-lg active:scale-95"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-cherry-600 hover:bg-cherry-700 text-white font-semibold text-xs transition-all shadow-sm hover:shadow-md active:scale-95"
                 >
                   <span>Book Consultation for This Event</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
 
-                <div className="flex items-center gap-2 text-xs text-burgundy-700/80 font-medium">
-                  <Heart className="w-3.5 h-3.5 text-cherry-500 shrink-0" />
+                <div className="flex items-center gap-1.5 text-[11px] text-burgundy-700/80 font-medium">
+                  <Heart className="w-3 h-3 text-cherry-500 shrink-0" />
                   <span>Handcrafted by master decorators with on-site engineering supervision.</span>
                 </div>
               </div>
