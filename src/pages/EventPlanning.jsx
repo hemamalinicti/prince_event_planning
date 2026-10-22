@@ -210,79 +210,104 @@ export default function EventPlanning({ onOpenEnquiry }) {
             })}
           </div>
 
-          {/* Active Category Display with Clearly Visible Photographic Royal Backdrop & Transparent Glass Cards */}
-          <div className="relative isolate rounded-3xl overflow-hidden border border-white/40 p-6 sm:p-10 lg:p-12 shadow-[0_20px_50px_rgba(201,24,74,0.12)] max-w-5xl mx-auto min-h-[500px] flex items-center">
+          {/* Active Category Display: 1 Side Image, 1 Side Content */}
+          <div className="relative isolate rounded-3xl overflow-hidden bg-white border border-cherry-200/80 shadow-[0_20px_50px_rgba(201,24,74,0.10)] max-w-6xl mx-auto flex flex-col lg:flex-row items-stretch">
             
-            {/* Background Photographic Image - Clearly Visible without heavy dark wash */}
-            <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+            {/* 1 Side: Dedicated Photographic Showcase */}
+            <div className="w-full lg:w-1/2 relative min-h-[360px] sm:min-h-[440px] lg:min-h-[580px] overflow-hidden group bg-burgundy-950">
               <img
+                key={categories[activeCategory].bgImage}
                 src={categories[activeCategory].bgImage || "/royal-wedding-palace.jpg"}
                 alt={categories[activeCategory].title}
-                className="w-full h-full object-cover object-center transition-all duration-700"
+                className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
-              {/* Very light edge gradient so the entire photo is brightly visible through transparent cards */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30" />
-            </div>
-
-            <div className="relative z-10 w-full flex flex-col lg:flex-row gap-6 lg:gap-8 items-stretch">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent pointer-events-none" />
               
-              {/* Left Column: Transparent Glass Card */}
-              <div className="w-full lg:w-5/12 bg-black/25 backdrop-blur-[2px] p-6 sm:p-7 rounded-3xl border border-white/30 shadow-2xl flex flex-col justify-between">
-                <div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/50 text-amber-300 text-xs font-bold mb-4 border border-amber-300/40 backdrop-blur-sm shadow-md">
-                    <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                    {categories[activeCategory].badge}
-                  </div>
-
-                  <h3 className="font-editorial text-2xl sm:text-3xl font-bold text-white mb-2.5 leading-snug drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
-                    {categories[activeCategory].title}
-                  </h3>
-
-                  <div className="text-xs sm:text-sm font-mono text-amber-300 font-bold mb-4 drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]">
-                    {categories[activeCategory].subtitle}
-                  </div>
-
-                  <p className="text-sm text-white leading-relaxed font-bold drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]">
-                    {categories[activeCategory].desc}
-                  </p>
-                </div>
-
-                <div className="pt-6">
-                  <button
-                    onClick={() => onOpenEnquiry && onOpenEnquiry({ service: categories[activeCategory].title })}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-cherry-600 hover:bg-cherry-500 text-white font-semibold text-xs sm:text-sm transition-all shadow-xl hover:shadow-cherry-600/60 border border-cherry-300/40"
-                  >
-                    <span>Book Consultation for This Event</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
+              {/* Top Floating Badge */}
+              <div className="absolute top-4 sm:top-5 left-4 sm:left-5 flex items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/65 backdrop-blur-md text-amber-300 text-xs font-bold border border-amber-300/40 shadow-lg">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                  {categories[activeCategory].badge}
+                </span>
               </div>
 
-              {/* Right Column: Transparent Glass Card with Inclusions & Logistics */}
-              <div className="w-full lg:w-7/12 bg-black/25 backdrop-blur-[2px] rounded-3xl p-6 sm:p-7 border border-white/30 shadow-2xl flex flex-col justify-between">
-                <div>
-                  <div className="text-xs font-bold uppercase tracking-wider mb-4 pb-3 border-b border-white/20 flex items-center justify-between">
-                    <span className="font-editorial text-base sm:text-lg font-bold text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">Turnkey Inclusions & Logistics</span>
-                    <span className="font-mono text-amber-300 font-bold text-xs px-2.5 py-1 rounded-full bg-black/50 border border-amber-400/30 backdrop-blur-sm">Category 0{activeCategory + 1}</span>
+              {/* Bottom Image Caption & Category Number */}
+              <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 text-white pointer-events-none">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-amber-300 font-bold block mb-1">
+                  Category 0{activeCategory + 1} • Signature Build
+                </span>
+                <p className="font-editorial text-lg sm:text-xl font-bold text-white drop-shadow-md leading-snug">
+                  {categories[activeCategory].title}
+                </p>
+              </div>
+            </div>
+
+            {/* Other Side: Complete Details & Inclusions Content */}
+            <div className="w-full lg:w-1/2 p-6 sm:p-8 lg:p-10 flex flex-col justify-between bg-white">
+              <div>
+                {/* Top Meta Bar */}
+                <div className="flex items-center justify-between mb-4">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cherry-50 text-cherry-700 text-xs font-bold border border-cherry-200">
+                    <Crown className="w-3.5 h-3.5 text-cherry-600" />
+                    Turnkey Event Production
+                  </span>
+                  <span className="text-xs font-mono font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200">
+                    Category 0{activeCategory + 1}
+                  </span>
+                </div>
+
+                {/* Title & Subtitle */}
+                <h3 className="font-editorial text-2xl sm:text-3xl font-bold text-burgundy-950 mb-2 leading-tight">
+                  {categories[activeCategory].title}
+                </h3>
+                <div className="text-xs sm:text-sm font-semibold text-cherry-700 uppercase tracking-wider mb-3">
+                  {categories[activeCategory].subtitle}
+                </div>
+
+                {/* Narrative Description */}
+                <p className="text-xs sm:text-sm text-burgundy-800/85 leading-relaxed font-medium mb-6">
+                  {categories[activeCategory].desc}
+                </p>
+
+                {/* Inclusions & Logistics Section */}
+                <div className="pt-4 border-t border-cream-200">
+                  <div className="text-xs font-bold uppercase tracking-wider text-burgundy-900 mb-3 flex items-center justify-between">
+                    <span className="font-editorial text-sm sm:text-base font-bold text-burgundy-950">
+                      Turnkey Inclusions & Logistics
+                    </span>
+                    <span className="text-[11px] font-mono text-cherry-700 font-semibold">
+                      5 Key Deliverables
+                    </span>
                   </div>
 
-                  <div className="space-y-3">
+                  <div className="space-y-2.5">
                     {categories[activeCategory].features.map((feat, fIdx) => (
-                      <div key={fIdx} className="flex items-start gap-3 py-1 text-xs sm:text-sm text-white font-bold leading-relaxed drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]">
-                        <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)]" />
+                      <div key={fIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-burgundy-900 font-medium leading-relaxed">
+                        <CheckCircle2 className="w-4 h-4 text-cherry-600 shrink-0 mt-0.5" />
                         <span>{feat}</span>
                       </div>
                     ))}
                   </div>
                 </div>
+              </div>
 
-                <div className="mt-6 pt-4 border-t border-white/20 flex items-center gap-2 text-xs text-amber-200 font-semibold drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]">
-                  <Heart className="w-4 h-4 text-cherry-400 shrink-0 drop-shadow" />
+              {/* Bottom Actions & Supervision Note */}
+              <div className="pt-6 mt-6 border-t border-cream-200 space-y-3.5">
+                <button
+                  onClick={() => onOpenEnquiry && onOpenEnquiry({ service: categories[activeCategory].title })}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-cherry-600 hover:bg-cherry-700 text-white font-semibold text-xs sm:text-sm transition-all shadow-md hover:shadow-lg active:scale-95"
+                >
+                  <span>Book Consultation for This Event</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+
+                <div className="flex items-center gap-2 text-xs text-burgundy-700/80 font-medium">
+                  <Heart className="w-3.5 h-3.5 text-cherry-500 shrink-0" />
                   <span>Handcrafted by master decorators with on-site engineering supervision.</span>
                 </div>
               </div>
-
             </div>
+
           </div>
 
         </div>
