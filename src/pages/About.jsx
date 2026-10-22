@@ -633,7 +633,7 @@ export default function About({ onOpenEnquiry }) {
 
       {/* 4. Milestone Timeline (2014 – 2026) - Compact Horizontal Heritage Journey */}
       <section className="py-12 sm:py-16 bg-white/40 backdrop-blur-sm border-b border-black/5">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div className="w-full max-w-[1550px] mx-auto px-3 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-10">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-cream-300 text-burgundy-900 text-xs font-semibold mb-3 shadow-xs">
@@ -648,12 +648,12 @@ export default function About({ onOpenEnquiry }) {
             </p>
           </div>
 
-          {/* Compact Horizontal Progression - Low Height */}
-          <div className="relative max-w-6xl mx-auto">
+          {/* Compact Horizontal Progression - Full Width Deck */}
+          <div className="relative w-full">
             {/* Horizontal progress connector line (visible lg+) */}
-            <div className="hidden lg:block absolute top-7 left-12 right-12 h-0.5 bg-gradient-to-r from-cherry-500 via-cherry-600 to-burgundy-900 z-0" />
+            <div className="hidden lg:block absolute top-7 left-10 right-10 h-0.5 bg-gradient-to-r from-cherry-500 via-cherry-600 to-burgundy-900 z-0" />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 relative z-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 relative z-10">
               {milestones.map((m, idx) => (
                 <div 
                   key={idx}
