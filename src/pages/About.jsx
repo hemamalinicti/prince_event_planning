@@ -556,10 +556,10 @@ export default function About({ onOpenEnquiry }) {
                     </span>
                   </div>
                   <h3 className="font-editorial text-xl sm:text-2xl font-bold text-white">
-                    Prince Raj
+                    Priya Prince
                   </h3>
                   <p className="text-xs text-cream-200/90 mt-0.5">
-                    Chief Event Architect & Structural Production Lead
+                    Chief Event Architect & Managing Director
                   </p>
                 </div>
               </div>
@@ -619,7 +619,7 @@ export default function About({ onOpenEnquiry }) {
                   "Every royal wedding and corporate summit is a milestone in someone's legacy. We treat every floral canopy and heavy stage truss with equal reverence, architectural precision, and devotion to perfection."
                 </p>
                 <div className="mt-3 flex items-center justify-between text-xs text-cream-200/80">
-                  <span className="font-semibold text-white">— Prince Raj, Founder & Director</span>
+                  <span className="font-semibold text-white">— Priya Prince, Founder & Director</span>
                   <span className="text-[11px] text-cherry-300">Coimbatore Flagship HQ</span>
                 </div>
               </div>
