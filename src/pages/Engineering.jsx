@@ -33,6 +33,7 @@ export default function Engineering({ onOpenEnquiry }) {
       title: 'German Aluminum Box Trussing & Roofs',
       subtitle: 'TÜV-Certified F34 & F44 Structural Rigging',
       icon: Layers,
+      image: '/pillar-engineering.png',
       badge: '65 km/h Wind Shear Rated',
       pills: ['DIN EN 13814', '3,500 kg Load', 'TÜV F34/F44'],
       shortDesc: 'Mathematical dynamic load calculation for complex amphitheater roofs and heavy weather resistance.',
@@ -50,6 +51,7 @@ export default function Engineering({ onOpenEnquiry }) {
       title: 'Concert Line-Array Acoustics & Audio Matrix',
       subtitle: 'Acoustic Precision for 100 to 10,000+ Audiences',
       icon: Volume2,
+      image: '/hero-stage.jpg',
       badge: 'Zero-Latency DSP Tuning',
       pills: ['96kHz 64-bit DSP', 'Dante Audio-over-IP', 'CPCB Noise Norms'],
       shortDesc: 'Predictive room-simulation modeling delivering crystal-clear vocal intelligibility without harsh echo.',
@@ -67,6 +69,7 @@ export default function Engineering({ onOpenEnquiry }) {
       title: 'Intelligent DMX Lighting & Laser Architecture',
       subtitle: 'Atmospheric Visual Scenography & Synchronized FX',
       icon: SunMedium,
+      image: '/sangeet-celebrations.jpg',
       badge: 'DMX-512 Automation Matrix',
       pills: ['380W Moving Heads', 'CRI 95+ Video White', 'Safe Cold Sparks'],
       shortDesc: 'Warm palatial ambient washes flattering bridal silks to high-octane computerized beam choreography.',
@@ -84,6 +87,7 @@ export default function Engineering({ onOpenEnquiry }) {
       title: '4K Weatherproof LED Walls & Power Redundancy',
       subtitle: 'High-Refresh Visual Backdrops & 0-Second Failover ATS',
       icon: Tv,
+      image: '/corporate-conventions.jpg',
       badge: '3,840Hz Refresh • 0-Sec ATS',
       pills: ['P2.6 / P3.9 IP65', 'Curvature ±15°', 'Twin Cummins Gensets'],
       shortDesc: 'Seamless ultra-fine pixel pitch LED panels with synchronized silent diesel generators for 100% uptime.',
@@ -197,20 +201,30 @@ export default function Engineering({ onOpenEnquiry }) {
                   <span className="absolute bottom-0 right-0 w-3.5 h-3.5 border-b-2 border-r-2 border-amber-400/80 rounded-br-3xl transition-all duration-300 group-hover:w-5 group-hover:h-5 group-hover:border-amber-300" />
 
                   <div className="flex flex-col">
-                    {/* Header badge & index */}
-                    <div className="h-7 flex items-center justify-between gap-2 mb-4">
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 text-amber-300 text-[11px] font-bold border border-amber-400/50 shadow-xs backdrop-blur-xs">
-                        <Sparkles className="w-3 h-3 text-amber-400" />
-                        <span className="text-amber-200">{service.badge}</span>
-                      </span>
-                      <span className="font-mono text-[11px] font-bold text-amber-300 bg-black/60 px-2.5 py-0.5 rounded-full border border-amber-400/40 shadow-xs">
-                        0{idx + 1}
-                      </span>
-                    </div>
+                    {/* Photographic Showcase Window with Overlaid Badges */}
+                    <div className="relative w-full h-44 sm:h-48 rounded-2xl overflow-hidden mb-4 border border-amber-400/40 shadow-inner">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 filter brightness-[0.92] contrast-[1.05]"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/35 pointer-events-none" />
 
-                    {/* Icon */}
-                    <div className="w-12 h-12 rounded-2xl bg-black/40 text-amber-300 border border-amber-400/40 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-amber-400 group-hover:text-burgundy-950 transition-all shadow-md">
-                      <Icon className="w-6 h-6 transition-colors" />
+                      {/* Header Badge & Index over Image */}
+                      <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between gap-2">
+                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/75 text-amber-300 text-[10px] sm:text-[11px] font-bold border border-amber-400/50 shadow-md backdrop-blur-md">
+                          <Sparkles className="w-3 h-3 text-amber-400 shrink-0" />
+                          <span className="text-amber-200 truncate">{service.badge}</span>
+                        </span>
+                        <span className="font-mono text-[11px] font-bold text-amber-300 bg-black/75 px-2 py-0.5 rounded-full border border-amber-400/50 shadow-md backdrop-blur-md">
+                          0{idx + 1}
+                        </span>
+                      </div>
+
+                      {/* Icon Badge Floating on bottom-left of image */}
+                      <div className="absolute bottom-2.5 left-2.5 w-10 h-10 rounded-xl bg-black/75 text-amber-300 border border-amber-400/50 flex items-center justify-center backdrop-blur-md shadow-lg group-hover:scale-110 group-hover:bg-amber-400 group-hover:text-burgundy-950 transition-all">
+                        <Icon className="w-5 h-5 transition-colors" />
+                      </div>
                     </div>
 
                     {/* Title with locked height for optical alignment - Crisp Pure White */}
@@ -292,6 +306,19 @@ export default function Engineering({ onOpenEnquiry }) {
                   <span className="text-xs font-mono text-cream-200">
                     Piece 01 • Rigging Architecture
                   </span>
+                </div>
+
+                {/* Modal Showcase Image */}
+                <div className="relative w-full h-44 sm:h-48 rounded-2xl overflow-hidden mb-5 border border-amber-400/40 shadow-lg">
+                  <img
+                    src={expandedService.image}
+                    alt={expandedService.title}
+                    className="w-full h-full object-cover object-center filter brightness-[0.92] contrast-[1.05]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none" />
+                  <div className="absolute bottom-2.5 left-2.5 text-xs font-mono text-amber-300 font-bold px-3 py-1 rounded-full bg-black/75 border border-amber-400/40 backdrop-blur-md">
+                    Technical Blueprint Reference
+                  </div>
                 </div>
 
                 <div className="flex items-start gap-4 mb-4">
