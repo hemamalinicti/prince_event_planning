@@ -41,7 +41,8 @@ export default function About({ onOpenEnquiry }) {
     }
   ];
 
-  const [activeCard, setActiveCard] = useState(2); // 3rd card centered and popped by default
+  const [activeSlide, setActiveSlide] = useState(2); // 3rd card centered in mobile deck
+  const [selectedCard, setSelectedCard] = useState(null); // No card selected by default so all cards are normal on page load
   const [touchStartX, setTouchStartX] = useState(null);
 
   const pillarsOfRigor = [
@@ -119,11 +120,13 @@ export default function About({ onOpenEnquiry }) {
 
 
   const handlePrevPillar = () => {
-    setActiveCard((prev) => (prev === 0 ? pillarsOfRigor.length - 1 : prev - 1));
+    setActiveSlide((prev) => (prev === 0 ? pillarsOfRigor.length - 1 : prev - 1));
+    setSelectedCard(null);
   };
 
   const handleNextPillar = () => {
-    setActiveCard((prev) => (prev + 1) % pillarsOfRigor.length);
+    setActiveSlide((prev) => (prev + 1) % pillarsOfRigor.length);
+    setSelectedCard(null);
   };
 
   const handleTouchStart = (e) => {
@@ -221,8 +224,8 @@ export default function About({ onOpenEnquiry }) {
             <div className="relative w-full h-[490px] sm:h-[510px] flex items-center justify-center my-2">
               {pillarsOfRigor.map((pillar, idx) => {
                 const IconComponent = pillar.icon;
-                const isActive = activeCard === idx;
-                const diff = idx - activeCard;
+                const isActive = selectedCard === idx;
+                const diff = idx - activeSlide;
 
                 let transformStyle = '';
                 let zIndex = 10;
@@ -259,7 +262,14 @@ export default function About({ onOpenEnquiry }) {
                 return (
                   <div
                     key={idx}
-                    onClick={() => setActiveCard(idx)}
+                    onClick={() => {
+                      if (activeSlide !== idx) {
+                        setActiveSlide(idx);
+                        setSelectedCard(idx);
+                      } else {
+                        setSelectedCard(selectedCard === idx ? null : idx);
+                      }
+                    }}
                     style={{
                       transform: transformStyle,
                       zIndex,
@@ -384,10 +394,13 @@ export default function About({ onOpenEnquiry }) {
                 {pillarsOfRigor.map((_, idx) => (
                   <button
                     key={idx}
-                    onClick={() => setActiveCard(idx)}
+                    onClick={() => {
+                      setActiveSlide(idx);
+                      setSelectedCard(null);
+                    }}
                     aria-label={`Go to pillar ${idx + 1}`}
                     className={`h-2 rounded-full transition-all duration-300 ${
-                      activeCard === idx
+                      activeSlide === idx
                         ? 'w-7 bg-cherry-600'
                         : 'w-2 bg-cream-300 hover:bg-cream-400'
                     }`}
@@ -396,7 +409,7 @@ export default function About({ onOpenEnquiry }) {
               </div>
 
               <span className="text-[10px] font-mono font-bold text-cherry-700 bg-cherry-50 px-2 py-0.5 rounded-full border border-cherry-200">
-                0{activeCard + 1} / 05
+                0{activeSlide + 1} / 05
               </span>
             </div>
           </div>
@@ -406,7 +419,7 @@ export default function About({ onOpenEnquiry }) {
             <div className="flex items-stretch justify-center">
               {pillarsOfRigor.map((pillar, idx) => {
                 const IconComponent = pillar.icon;
-                const isActive = activeCard === idx;
+                const isActive = selectedCard === idx;
 
                 let baseZ = 10;
                 if (idx === 2) baseZ = 30;
@@ -422,7 +435,7 @@ export default function About({ onOpenEnquiry }) {
                 return (
                   <div
                     key={idx}
-                    onClick={() => setActiveCard(idx)}
+                    onClick={() => setSelectedCard(selectedCard === idx ? null : idx)}
                     style={{ zIndex }}
                     className={`group relative w-[275px] sm:w-[295px] xl:w-[315px] h-[460px] xl:h-[480px] shrink-0 rounded-3xl overflow-hidden transition-all duration-500 cursor-pointer select-none flex flex-col justify-between ${marginClass} ${
                       isActive
