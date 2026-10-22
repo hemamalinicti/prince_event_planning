@@ -202,11 +202,11 @@ export default function EventPlanning({ onOpenEnquiry }) {
             })}
           </div>
 
-          {/* Active Category Display: 1 Side Image, 1 Side Content (Compact Height) */}
-          <div className="relative isolate rounded-2xl overflow-hidden bg-white border border-cherry-200/80 shadow-[0_16px_40px_rgba(201,24,74,0.08)] max-w-5xl mx-auto flex flex-col lg:flex-row items-stretch">
+          {/* Active Category Display: 1 Side Image, 1 Side Content (Consistent Compact Height for All Cards) */}
+          <div className="relative isolate rounded-2xl overflow-hidden bg-white border border-cherry-200/80 shadow-[0_16px_40px_rgba(201,24,74,0.08)] max-w-5xl mx-auto flex flex-col lg:flex-row items-stretch lg:h-[395px]">
             
             {/* 1 Side: Dedicated Photographic Showcase */}
-            <div className="w-full lg:w-1/2 relative min-h-[250px] sm:min-h-[290px] lg:min-h-[390px] overflow-hidden group bg-burgundy-950">
+            <div className="w-full lg:w-1/2 relative min-h-[250px] sm:min-h-[290px] lg:min-h-0 lg:h-full overflow-hidden group bg-burgundy-950">
               <img
                 key={categories[activeCategory].bgImage}
                 src={categories[activeCategory].bgImage || "/royal-wedding-palace.jpg"}
@@ -228,17 +228,17 @@ export default function EventPlanning({ onOpenEnquiry }) {
                 <span className="text-[10px] font-mono uppercase tracking-wider text-amber-300 font-bold block mb-0.5">
                   Category 0{activeCategory + 1} • Signature Build
                 </span>
-                <p className="font-editorial text-base sm:text-lg font-bold text-white drop-shadow-md leading-snug">
+                <p className="font-editorial text-base sm:text-lg font-bold text-white drop-shadow-md leading-snug line-clamp-1">
                   {categories[activeCategory].title}
                 </p>
               </div>
             </div>
 
             {/* Other Side: Complete Details & Inclusions Content */}
-            <div className="w-full lg:w-1/2 p-5 sm:p-6 lg:p-7 flex flex-col justify-between bg-white">
+            <div className="w-full lg:w-1/2 p-5 sm:p-6 lg:p-7 flex flex-col justify-between bg-white lg:h-full overflow-hidden">
               <div>
                 {/* Top Meta Bar */}
-                <div className="flex items-center justify-between mb-2.5">
+                <div className="flex items-center justify-between mb-2">
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cherry-50 text-cherry-700 text-[11px] font-bold border border-cherry-200">
                     <Crown className="w-3 h-3 text-cherry-600" />
                     Turnkey Production
@@ -249,15 +249,15 @@ export default function EventPlanning({ onOpenEnquiry }) {
                 </div>
 
                 {/* Title & Subtitle */}
-                <h3 className="font-editorial text-xl sm:text-2xl font-bold text-burgundy-950 mb-1 leading-snug">
+                <h3 className="font-editorial text-xl sm:text-2xl font-bold text-burgundy-950 mb-1 leading-snug line-clamp-1">
                   {categories[activeCategory].title}
                 </h3>
-                <div className="text-xs font-semibold text-cherry-700 uppercase tracking-wider mb-2">
+                <div className="text-xs font-semibold text-cherry-700 uppercase tracking-wider mb-2 line-clamp-1">
                   {categories[activeCategory].subtitle}
                 </div>
 
                 {/* Narrative Description */}
-                <p className="text-xs sm:text-[13px] text-burgundy-800/85 leading-relaxed font-medium mb-3.5">
+                <p className="text-xs sm:text-[13px] text-burgundy-800/85 leading-relaxed font-medium mb-3.5 line-clamp-2">
                   {categories[activeCategory].desc}
                 </p>
 
@@ -276,7 +276,7 @@ export default function EventPlanning({ onOpenEnquiry }) {
                     {categories[activeCategory].features.map((feat, fIdx) => (
                       <div key={fIdx} className="flex items-start gap-2 text-xs text-burgundy-900 font-medium leading-snug">
                         <CheckCircle2 className="w-3.5 h-3.5 text-cherry-600 shrink-0 mt-0.5" />
-                        <span>{feat}</span>
+                        <span className="line-clamp-1">{feat}</span>
                       </div>
                     ))}
                   </div>
@@ -284,7 +284,7 @@ export default function EventPlanning({ onOpenEnquiry }) {
               </div>
 
               {/* Bottom Actions & Supervision Note */}
-              <div className="pt-3.5 mt-3.5 border-t border-cream-200 space-y-2.5">
+              <div className="pt-3.5 mt-3.5 border-t border-cream-200 space-y-2">
                 <button
                   onClick={() => onOpenEnquiry && onOpenEnquiry({ service: categories[activeCategory].title })}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-cherry-600 hover:bg-cherry-700 text-white font-semibold text-xs transition-all shadow-sm hover:shadow-md active:scale-95"
