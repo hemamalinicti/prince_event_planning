@@ -167,7 +167,7 @@ export default function Home({ onOpenEnquiry }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           
           {/* Pillar 1: Event Planning Card - Royal Floral Arch Stage */}
-          <div className="relative rounded-3xl overflow-hidden border-2 border-cherry-900/30 shadow-warm-lg hover:shadow-warm-xl transition-all duration-300 flex flex-col justify-between group min-h-[520px]">
+          <div className="relative rounded-3xl overflow-hidden border-2 border-cherry-900/30 shadow-warm-lg hover:shadow-warm-xl transition-all duration-300 flex flex-col justify-between group min-h-[440px] sm:min-h-[460px]">
             
             {/* Background Image: User Provided Red Floral & Golden Arch Stage */}
             <div className="absolute inset-0 z-0 overflow-hidden">
@@ -181,35 +181,35 @@ export default function Home({ onOpenEnquiry }) {
             </div>
 
             {/* Card Content - Crisp White & Cherry Contrast */}
-            <div className="relative z-10 p-8 sm:p-10 flex flex-col justify-between h-full">
+            <div className="relative z-10 p-6 sm:p-8 flex flex-col justify-between h-full">
               <div>
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-13 h-13 p-3 rounded-2xl bg-black/50 backdrop-blur-md text-cherry-300 border border-white/30 shadow-md">
-                    <HeartHandshake className="w-6 h-6 text-cherry-300" />
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-11 h-11 p-2.5 rounded-2xl bg-black/50 backdrop-blur-md text-cherry-300 border border-white/30 shadow-md flex items-center justify-center">
+                    <HeartHandshake className="w-5 h-5 text-cherry-300" />
                   </div>
-                  <span className="text-[11px] uppercase tracking-wider font-bold px-3.5 py-1.5 rounded-full bg-cherry-600 text-white shadow-md border border-cherry-300/50">
+                  <span className="text-[11px] uppercase tracking-wider font-bold px-3 py-1 rounded-full bg-cherry-600 text-white shadow-md border border-cherry-300/50">
                     Pillar One
                   </span>
                 </div>
 
-                <h3 className="font-editorial text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
+                <h3 className="font-editorial text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2.5 drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
                   Bespoke Event Planning & Management
                 </h3>
-                <p className="text-sm md:text-base text-cream-100 leading-relaxed mb-6 font-bold drop-shadow-[0_1px_6px_rgba(0,0,0,0.9)]">
-                  From palatial destination weddings to high-profile corporate galas. We handle concept architecture, floral installations, artist management, and VIP hospitality with effortless grace.
+                <p className="text-xs sm:text-sm md:text-base text-cream-100 leading-relaxed mb-4 font-medium drop-shadow-[0_1px_6px_rgba(0,0,0,0.9)]">
+                  Palatial weddings, corporate galas, and bespoke VIP celebrations curated with effortless grace.
                 </p>
 
-                <ul className="space-y-3 text-xs sm:text-sm text-white font-semibold mb-8 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
-                  <li className="flex items-center gap-2.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-cherry-400 shrink-0 shadow-[0_0_8px_#ff4d6d]" />
+                <ul className="space-y-2 text-xs sm:text-sm text-white font-medium mb-5 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-cherry-400 shrink-0 shadow-[0_0_8px_#ff4d6d]" />
                     <span>Royal & Destination Weddings</span>
                   </li>
-                  <li className="flex items-center gap-2.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-cherry-400 shrink-0 shadow-[0_0_8px_#ff4d6d]" />
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-cherry-400 shrink-0 shadow-[0_0_8px_#ff4d6d]" />
                     <span>Corporate Summits & Global Galas</span>
                   </li>
-                  <li className="flex items-center gap-2.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-cherry-400 shrink-0 shadow-[0_0_8px_#ff4d6d]" />
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-cherry-400 shrink-0 shadow-[0_0_8px_#ff4d6d]" />
                     <span>VIP Guest Protocol & Artist Curation</span>
                   </li>
                 </ul>
@@ -217,16 +217,16 @@ export default function Home({ onOpenEnquiry }) {
 
               <Link
                 to="/event-planning"
-                className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-cherry-300 hover:text-white pt-5 border-t border-white/25 group/link transition-colors drop-shadow-[0_1px_4px_rgba(0,0,0,0.95)]"
+                className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-cherry-300 hover:text-white pt-4 border-t border-white/25 group/link transition-colors drop-shadow-[0_1px_4px_rgba(0,0,0,0.95)]"
               >
-                <span>Explore Event Planning Services</span>
+                <span>Explore Event Planning</span>
                 <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
               </Link>
             </div>
           </div>
 
           {/* Pillar 2: Technical Engineering Card - White Arch & Chandelier Stage */}
-          <div className="relative rounded-3xl overflow-hidden border-2 border-burgundy-900/30 shadow-warm-lg hover:shadow-warm-xl transition-all duration-300 flex flex-col justify-between group min-h-[520px]">
+          <div className="relative rounded-3xl overflow-hidden border-2 border-burgundy-900/30 shadow-warm-lg hover:shadow-warm-xl transition-all duration-300 flex flex-col justify-between group min-h-[440px] sm:min-h-[460px]">
             
             {/* Background Image: User Provided Grand White Arch Stage & Chandeliers */}
             <div className="absolute inset-0 z-0 overflow-hidden">
@@ -240,35 +240,35 @@ export default function Home({ onOpenEnquiry }) {
             </div>
 
             {/* Card Content - Crisp White & Radiant Amber Contrast */}
-            <div className="relative z-10 p-8 sm:p-10 flex flex-col justify-between h-full">
+            <div className="relative z-10 p-6 sm:p-8 flex flex-col justify-between h-full">
               <div>
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-13 h-13 p-3 rounded-2xl bg-black/50 backdrop-blur-md text-amber-300 border border-white/30 shadow-md">
-                    <Layers className="w-6 h-6 text-amber-300" />
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-11 h-11 p-2.5 rounded-2xl bg-black/50 backdrop-blur-md text-amber-300 border border-white/30 shadow-md flex items-center justify-center">
+                    <Layers className="w-5 h-5 text-amber-300" />
                   </div>
-                  <span className="text-[11px] uppercase tracking-wider font-bold px-3.5 py-1.5 rounded-full bg-amber-400 text-burgundy-950 shadow-md border border-amber-200">
+                  <span className="text-[11px] uppercase tracking-wider font-bold px-3 py-1 rounded-full bg-amber-400 text-burgundy-950 shadow-md border border-amber-200">
                     Pillar Two
                   </span>
                 </div>
 
-                <h3 className="font-editorial text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
+                <h3 className="font-editorial text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2.5 drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
                   Technical Staging & Engineering
                 </h3>
-                <p className="text-sm md:text-base text-cream-100 leading-relaxed mb-6 font-bold drop-shadow-[0_1px_6px_rgba(0,0,0,0.9)]">
-                  Certified German aluminum box trussing, line-array concert acoustics, curved 4K LED walls, and synchronized intelligent lighting designed with zero failover.
+                <p className="text-xs sm:text-sm md:text-base text-cream-100 leading-relaxed mb-4 font-medium drop-shadow-[0_1px_6px_rgba(0,0,0,0.9)]">
+                  German truss staging, concert line-array sound, and curved 4K LED visuals.
                 </p>
 
-                <ul className="space-y-3 text-xs sm:text-sm text-white font-semibold mb-8 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
-                  <li className="flex items-center gap-2.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0 shadow-[0_0_8px_#fbbf24]" />
+                <ul className="space-y-2 text-xs sm:text-sm text-white font-medium mb-5 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-amber-400 shrink-0 shadow-[0_0_8px_#fbbf24]" />
                     <span>Certified Heavy Box Truss & Staging</span>
                   </li>
-                  <li className="flex items-center gap-2.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0 shadow-[0_0_8px_#fbbf24]" />
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-amber-400 shrink-0 shadow-[0_0_8px_#fbbf24]" />
                     <span>Line Array Audio & Zero-Echo Tuning</span>
                   </li>
-                  <li className="flex items-center gap-2.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0 shadow-[0_0_8px_#fbbf24]" />
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-amber-400 shrink-0 shadow-[0_0_8px_#fbbf24]" />
                     <span>4K Curved LED Wall Video & Lighting Shows</span>
                   </li>
                 </ul>
@@ -276,9 +276,9 @@ export default function Home({ onOpenEnquiry }) {
 
               <Link
                 to="/engineering"
-                className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-amber-300 hover:text-white pt-5 border-t border-white/25 group/link transition-colors drop-shadow-[0_1px_4px_rgba(0,0,0,0.95)]"
+                className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-amber-300 hover:text-white pt-4 border-t border-white/25 group/link transition-colors drop-shadow-[0_1px_4px_rgba(0,0,0,0.95)]"
               >
-                <span>Explore Engineering Capabilities</span>
+                <span>Explore Engineering</span>
                 <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
               </Link>
             </div>
