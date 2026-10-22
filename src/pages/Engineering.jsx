@@ -181,24 +181,23 @@ export default function Engineering({ onOpenEnquiry }) {
             </p>
           </div>
 
-          {/* 4 Compact Teaser Cards Grid */}
+          {/* 4 Full-Bleed Photographic Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-            {engineeringServices.map((service, idx) => {
-              const Icon = service.icon;
+            {engineeringServices.map((service) => {
               return (
                 <div 
                   key={service.id}
                   onClick={() => setExpandedService(service)}
-                  className="relative rounded-3xl p-5 sm:p-6 border-2 border-amber-400/40 hover:border-amber-300 shadow-xl hover:shadow-[0_20px_45px_rgba(0,0,0,0.6)] hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between cursor-pointer group overflow-hidden h-[380px] sm:h-[400px]"
+                  className="relative rounded-3xl p-5 sm:p-6 border-2 border-amber-400/40 hover:border-amber-300 shadow-xl hover:shadow-[0_20px_45px_rgba(0,0,0,0.6)] hover:-translate-y-2 transition-all duration-300 flex flex-col justify-end cursor-pointer group overflow-hidden h-[360px] sm:h-[380px]"
                 >
                   {/* Full Card Photographic Background */}
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 filter brightness-[0.82] contrast-[1.08] pointer-events-none"
+                    className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 filter brightness-[0.85] contrast-[1.08] pointer-events-none"
                   />
                   {/* Dark Vignette Overlay for High-Contrast Text Legibility */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/35 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/20 pointer-events-none" />
 
                   {/* Top structural golden accent bar */}
                   <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 z-10" />
@@ -208,23 +207,6 @@ export default function Engineering({ onOpenEnquiry }) {
                   <span className="absolute top-0 right-0 w-3.5 h-3.5 border-t-2 border-r-2 border-amber-400/80 rounded-tr-3xl transition-all duration-300 group-hover:w-5 group-hover:h-5 group-hover:border-amber-300 z-10" />
                   <span className="absolute bottom-0 left-0 w-3.5 h-3.5 border-b-2 border-l-2 border-amber-400/80 rounded-bl-3xl transition-all duration-300 group-hover:w-5 group-hover:h-5 group-hover:border-amber-300 z-10" />
                   <span className="absolute bottom-0 right-0 w-3.5 h-3.5 border-b-2 border-r-2 border-amber-400/80 rounded-br-3xl transition-all duration-300 group-hover:w-5 group-hover:h-5 group-hover:border-amber-300 z-10" />
-
-                  {/* Top Section: Icon, Badge & Index */}
-                  <div className="relative z-10 flex items-start justify-between gap-2">
-                    <div className="w-11 h-11 rounded-2xl bg-black/60 backdrop-blur-md text-amber-300 border border-amber-400/50 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-amber-400 group-hover:text-burgundy-950 transition-all">
-                      <Icon className="w-5 h-5 transition-colors" />
-                    </div>
-
-                    <div className="flex items-center gap-1.5">
-                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md text-amber-300 text-[10px] sm:text-[11px] font-bold border border-amber-400/50 shadow-md">
-                        <Sparkles className="w-3 h-3 text-amber-400 shrink-0" />
-                        <span className="text-amber-200">{service.badge}</span>
-                      </span>
-                      <span className="font-mono text-[11px] font-bold text-amber-300 bg-black/70 backdrop-blur-md px-2 py-0.5 rounded-full border border-amber-400/50 shadow-md">
-                        0{idx + 1}
-                      </span>
-                    </div>
-                  </div>
 
                   {/* Bottom Section: Title, 1 Line of Content, Expand Trigger */}
                   <div className="relative z-10">
